@@ -34,14 +34,14 @@ jobs:
           tag-prefix: 'v'
           always-pre-version: ${{ github.ref == 'refs/heads/develop' }}
           preid: 'alpha'
-          skip-tag: ${{ github.ref != 'refs/heads/develop' }}
+          skip-tag: ${{ github.ref != 'refs/heads/master' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'cat package.json'
         run: cat ./package.json
       - name: Sync branches
         uses: TreTuna/sync-branches@1.2.0
-        if: ${{ github.ref != 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
