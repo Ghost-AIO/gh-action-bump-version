@@ -33,7 +33,8 @@ jobs:
         with:
           tag-prefix: 'v'
           always-pre-version: ${{ github.ref == 'refs/heads/develop' }}
-          push: ${{ github.ref != 'refs/heads/develop' }}
+          preid: 'alpha'
+          skip-tag: ${{ github.ref != 'refs/heads/develop' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'cat package.json'
