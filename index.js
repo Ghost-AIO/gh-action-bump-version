@@ -106,11 +106,8 @@ Toolkit.run(async (tools) => {
   // handle when user opted-in to always create a pre-version
   else if (process.env['INPUT_ALWAYS-PRE-VERSION'] === "true") {
     console.log("Detected ALWAYS-PRE-VERSION to be true. Will create a pre version...");
-    if (!version.startsWith("pre")) {
-      version = "pre" + version;
-    }
     if (preid) {
-      version = `${version} --preid=${preid}`;
+      version = `prerelease --preid=${preid}`;
     }
   }
 
