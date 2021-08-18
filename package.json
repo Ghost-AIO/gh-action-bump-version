@@ -1,10 +1,11 @@
 {
   "name": "gh-action-bump-version",
-  "version": "8.3.9",
+  "version": "8.3.10-alpha.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skillnation/gh-action-bump-version.git"
   },
+  "description": "auto version bump github action",
   "keywords": [],
   "author": "",
   "license": "ISC",
