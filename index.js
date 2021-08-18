@@ -17,12 +17,12 @@ Toolkit.run(async (tools) => {
   }
 
   const tagPrefix = process.env['INPUT_TAG-PREFIX'] || '';
-  const messages = event.commits ? event.commits.map((commit) => commit.message + '\n' + commit.body) : [];
+  const messages = event.commits ? event.commits.map((commit) => commit.message) : [];
 
   const commitMessage = process.env['INPUT_COMMIT-MESSAGE'] || 'ci: version bump to {{version}}';
   console.log('commit messages:', messages);
   const commitMessageRegex = new RegExp(commitMessage.replace(/{{version}}/g, `${tagPrefix}\\d+\\.\\d+\\.\\d+`), 'ig');
-  const isVersionBump = messages.find((message) => commitMessageRegex.test(message)) !== undefined && message.split('-').length === 1;
+  const isVersionBump = messages.find((message) => (commitMessageRegex.test(message) !== undefined && message.split('-').length === 1));
 
   if (isVersionBump) {
     tools.exit.success('No action necessary because we found a previous bump!');
